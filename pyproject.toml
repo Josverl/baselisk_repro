@@ -1,3 +1,22 @@
+[project]
+name = "Basilisk_for_MicroPython"
+version = "0.2.0"
+description = "Testing Type checking with Basilisk and MicroPython"
+readme = "readme.md"
+requires-python = ">=3.10"
+dependencies = []
+
+
+[project.optional-dependencies]
+# install to folder typings
+# uv pip install -r pyproject.toml --extra stubs --target typings
+stubs = [
+  "micropython-stdlib-stubs==1.28.0.*",
+  "micropython-esp32-stubs==1.28.0.*"
+]
+
+
+
 # ###################################################################
 # basilisk options:
 
@@ -13,7 +32,7 @@ typeshed-path = "typings"
 # pyright options:
 
 [tool.pyright]
-include = ["."]
+include = ["src"]
 ignore = ["**/typings"]
 exclude = [".*", "__*", "**/typings"]
 
@@ -34,7 +53,7 @@ reportUnnecessaryTypeIgnoreComment = "error"
 platform = "linux"
 mypy_path = "typings"
 custom_typeshed_dir = "typings" # allow mypy to use micropython-stdlib
-files = "*.py"
+files = "src/*.py"
 exclude = [
     "typings[\\/].*", # TOML basic string 
 ]
